@@ -9,7 +9,13 @@ terraform {
 
 provider "local" {}
 
+variable "message" {
+  description = "Message to write in the file"
+  type        = string
+  default     = "Hello from Terraform"
+}
+
 resource "local_file" "hello_file" {
   filename = "hello.txt"
-  content  = "Hello from Terraform"
+  content  = var.message
 }
