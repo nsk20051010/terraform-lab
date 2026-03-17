@@ -19,3 +19,7 @@ resource "local_file" "hello_file" {
   filename = "hello.txt"
   content  = var.message
 }
+
+output "file_path" {
+  value = local_file.hello_file.filename
+}
