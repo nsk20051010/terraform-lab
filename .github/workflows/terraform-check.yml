@@ -17,18 +17,40 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Init
-        run: terraform init
+      # -------------------------
+      # Day 1 Checks
+      # -------------------------
+      - name: Day1 Init
+        run: terraform init -input=false
         working-directory: ./day1
 
-      - name: Terraform Format Check
+      - name: Day1 Format Check
         run: terraform fmt -check
         working-directory: ./day1
 
-      - name: Terraform Validate
+      - name: Day1 Validate
         run: terraform validate
         working-directory: ./day1
 
-      - name: Terraform Plan
-        run: terraform plan
+      - name: Day1 Plan
+        run: terraform plan -input=false
         working-directory: ./day1
+
+      # -------------------------
+      # Day 2 Checks
+      # -------------------------
+      - name: Day2 Init
+        run: terraform init -input=false
+        working-directory: ./day2
+
+      - name: Day2 Format Check
+        run: terraform fmt -check
+        working-directory: ./day2
+
+      - name: Day2 Validate
+        run: terraform validate
+        working-directory: ./day2
+
+      - name: Day2 Plan
+        run: terraform plan -var-file="dev.tfvars" -input=false
+        working-directory: ./day2
